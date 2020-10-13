@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png%22%3E">
+    <title> Length Conversion </title>
+
+  <style>
+    
+    body { max-width: 440px; 
+    background-color: aqua;}
+
+
+  </style>
+</head>
+
+<body>
+
+    <h1>Çevirme İşlemi!</h1>
+inch 
+<input type=number id=inch value=0 onChange="OnChangeInch()">
+cm 
+<input type=number id=cm value=0 onChange="OnChangeCm()">
+
+<h4 style="color: brown;">çevirmek için entera basınız!</h4>
+
+
+<script>
+"use strict";
+function OnChangeInch() {
+  let value = Number(inch.value) * 2.54;
+  cm.value = value.toFixed(1);
+}
+
+function OnChangeCm(){
+  let value = Number(cm.value) / 2.54;
+  inch.value = value.toFixed(1);
+}
+
+</script>
+
+</body>
+</html>
