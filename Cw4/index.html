@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="../images/icon192.png">
+    <title>List of Objects </title>
+
+  <style>
+    body { max-width: 500px; }
+    #inp { white-space: pre-wrap; }
+    #sample { overflow-x: auto; }
+    #out { color: blue; }
+  </style>
+</head>
+
+<body>
+
+<h2 id=title></h2>
+<b>Text input &emsp;
+<input type=button id=convert value=Convert onclick="toList()">
+</b>
+<p>
+  <textarea id=inp onchange="convert.disabled=false" rows=10 cols=50 >
+  </textarea>
+</p>
+
+<a href="Screenshot from 2020-10-20 10-33-10.png">ekran resmini görmek için tıklayınız</a>
+<p>
+    <span>diziyi bir araya atiyorum</span>
+    <hr>
+let dizi = toList()
+</p>
+<p>
+    <span>dizinin içindeki sadece mailleri getiriyorum</span>
+    <hr>
+dizi.map(x => x.Email)
+</p>
+<p>
+    <span>dizinin içindeki bölümü bilgisayar mühendisliği olanları getiriyorum</span>
+    <hr>
+dizi.filter(d => d.Bölüm == "Bilgisayar Mühendisliği")
+</p>
+<p>
+    <span>mailleri bir değişkene atıyorum</span>
+    <hr>
+    let s = dizi.map(x => x.Email)
+</p>
+<p>
+    <span>mailleri sıralıyorum</span>
+    <hr>
+    s.sort()
+</p>
+<p>
+    <span>objeleri tersine sıralıyorum</span>
+    <hr>
+    dizi.reverse()
+</p>
+<hr>
+<b>JSON output</b>
+<pre id=out></pre>
+<hr />
+<b>Sample code</b>
+<pre id=sample></pre>
+<hr />
+<p>Ref: 
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters#Examples" 
+   target="NewTab">Rest Parameters</a>
+</p>
+<script>
+"use strict";
+function toList(str) {
+  function toObject(x) {
+    let b = {}
+    for (let [i,s] of x.split('\t').entries())
+      b[keys[i]] = (isNaN(s)? s : Number(s))
+    return b
+  }
+    if (str) inp.value = str
+    else str = inp.value
+    convert.disabled = true
+    let [d0, ...data] = str.split('\n')
+    let keys = d0.split('\t')
+    console.log("Keys:", keys)
+    let a = data.map(toObject)
+    out.innerText = JSON.stringify(a, '' ,2)
+    console.table(a)
+    return a
+}
+const PLANET = 
+`Name	Diam	Mass	Radius	Period
+Mercury	0.382	0.06	0.40	0.24
+Venus	0.949	0.82	0.72	0.62
+Earth	1.000	1.00	1.00	1.00
+Mars	0.532	0.11	1.52	1.88
+Jupiter	11.209	317.80	5.20	11.86
+Saturn	9.449	95.20	9.54	29.46
+Uranus	4.007	14.60	19.22	84.01
+Neptune	3.883	17.20	30.06	164.80`,
+
+MOUNT = `Zaman damgası	Ad Soyad	Email	Telefon Numarası	Bölüm	Sınıf
+16.11.2019 11:30:45	Emine Samiyenur Ayrancı	emine.ayranci@stu.fsm.edu.tr	5425865505	Bilgisayar Mühendisliği	3. Sınıf
+16.11.2019 12:01:22	Çağlasu Altaş 	caglasueylulaltas@gmail.com 	05344205032	Bilgisayar Mühendisliği	3. Sınıf
+16.11.2019 13:20:35	Şeyma KOTAN	seymakotan34@gmail.com	05307830903	Elektrik ve Elektronik Mühendisliği	3. Sınıf
+16.11.2019 13:27:25	Canan inan	cananinannnn@gmail.com	5530919985	Elektrik ve Elektronik Mühendisliği	3. Sınıf
+16.11.2019 14:57:55	Muhammed Emin Karaaslan	mhmmdkaraaslan@gmail.com	5319226307	Elektrik ve Elektronik Mühendisliği	3. Sınıf
+16.11.2019 14:58:37	Fatih Furkan Özdemir 	fatihfurkanozdemr@gmail.com 	5399794108	Elektrik ve Elektronik Mühendisliği	3. Sınıf
+16.11.2019 15:07:36	Saliha Sağol	salihasagol@gmail.com	05456123055	Bilgisayar Mühendisliği	1. Sınıf
+16.11.2019 15:08:22	Gaye Uğur 	gaye.ugur@stu.fsm.edu.tr	05377898802	Bilgisayar Mühendisliği	1. Sınıf
+16.11.2019 15:28:40	Merve Çınar 	m.cinar@stu.fsm.edu.tr	05303413739	Bilgisayar Mühendisliği	1. Sınıf
+16.11.2019 16:29:31	Furkan Ülengin 	furkanulengin@gmail.com	5399204810	Biyomedikal Mühendisliği	2. Sınıf
+16.11.2019 18:08:16	Mürşide gökçe	murside.gokce@stu.fsm.edu.tr	05416924466	Biyomedikal Mühendisliği	1. Sınıf
+17.11.2019 23:05:29	Burak Enes Demir	burakenesdemirr@gmail.com	05415155803	Bilgisayar Mühendisliği	3. Sınıf
+18.11.2019 10:01:08	Halil ibrahim yarış	halilibrahimyaris34@gmail.com	05350189463	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 10:01:18	Faruk Ceylan	faruk.ceylan@stu.fsm.edu.tr	05077409992	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 10:02:38	Burak Ceylan	burak.ceylan@stu.fsm.edu.tr	05332103049	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 10:03:16	Yüşa Oruç	yusa.oruc@stu.fsm.edu.tr	05346105505	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 10:05:56	Ahmet Yanık	ahmetyaniklar@gmail.com	05446859752	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 10:06:49	Ahmet Cemalettin Kumru 	ahmet.amal17@gmail.com 	05386969681	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 10:07:51	Furkan Gündoğan	furkangundogan14@outlook.com	05373834345	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 11:17:02	Nazif Enes Kızılcin	nazifenes.kizilcin@stu.fsm.edu.tr 	05439595759	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 12:21:39	Ruya Rava Rajab	rawaa.rajab@gmail.com	+90 553 563 4945	Biyomedikal Mühendisliği	3. Sınıf
+18.11.2019 12:43:37	Emre USTA	emreustaa34@gmail.com	05414919734	Bilgisayar Mühendisliği	3. Sınıf
+18.11.2019 12:43:38	Tuğfe İVECEK	tugfe.ivecek52@gmail.com	05414919752	Biyomedikal Mühendisliği	3. Sınıf
+18.11.2019 12:46:59	Yunus Emre Adaş	yunusemre.adas@stu.fsm.edu.tr	05446403031	Bilgisayar Mühendisliği	1. Sınıf
+18.11.2019 13:10:52	Emre Tanrıverdi	memre.tanriverdi@stu.fsm.edu.tr	5414486130	Bilgisayar Mühendisliği	1. Sınıf
+18.11.2019 14:05:46	Batuhan Baştürk	batuhan.basturk@stu.fsm.edu.tr	5375018073	Bilgisayar Mühendisliği	3. Sınıf
+18.11.2019 14:07:17	Ömer Faruk Dursun	omerfaruk.dursun@stu.fsm.edu.tr	05376039508	Bilgisayar Mühendisliği	3. Sınıf
+18.11.2019 14:08:23	Çağrı Üstün	cagri-ustun@hotmail.com	5446639140	Bilgisayar Mühendisliği	3. Sınıf
+18.11.2019 14:09:23	İsmail Taha Samed Özkan	itahasamed.ozkan@stu.fsm.edu.tr	05305457699	Bilgisayar Mühendisliği	3. Sınıf
+18.11.2019 14:12:30	Ömer Faruk KAAN	omerfaruk.kaan@stu.fsm.edu.tr	5056532721	Bilgisayar Mühendisliği	4. Sınıf
+18.11.2019 14:12:54	Zeynep NASIP	zeynasip@gmail.com	5398207862	Bilgisayar Mühendisliği	4. Sınıf
+18.11.2019 14:13:35	Muhammed Zahid ÜNAL	muhammedzahid.unl@gmail.com	5060618568	Bilgisayar Mühendisliği	4. Sınıf
+18.11.2019 14:33:36	Başak Erdoğan	edabasakerdogan@gmail.com	05076179758	Bilgisayar Mühendisliği	3. Sınıf
+18.11.2019 14:38:46	Cüneyt Anlayışlı	cuneydanlayisli@gmail.com	5433168329	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 14:42:02	Halil ibrahim Kaya	halilibrahim.kaya@stu.fsm.edu.tr	0552 372 5781	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 14:48:13	Bedirhan Yıldırım	bedirhanyildirim96@gmail.com	05347907494	Bilgisayar Mühendisliği	4. Sınıf
+18.11.2019 14:57:49	Kevser Büşra Yıldırım	kevserbusra.yildirim@stu.fsm.edu.tr	05459006026	Bilgisayar Mühendisliği	1. Sınıf
+18.11.2019 14:58:21	Arif Emre Özbalaban	arifemre53@outlook.com	5300715398	Elektrik ve Elektronik Mühendisliği	3. Sınıf
+18.11.2019 15:07:47	Onur Alkurt	onuralkurt@str.sehir.edu.tr	05317010693	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 15:37:56	Abdussamet KACI	abdussamet.kaci@stu.fsm.edu.tr	05380333443	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 15:39:13	Kübra Yıldırım	K.yildirim1499@gmail.com	5550243414	Elektrik ve Elektronik Mühendisliği	2. Sınıf
+18.11.2019 15:41:05	Murad Muntasır Saeed Mala	murat.muntasir@gmail.com	5385709808	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 16:03:14	Onur Kınay 	onur.kinay@stu.fsm.edu.tr	5541454522	Elektrik ve Elektronik Mühendisliği	1. Sınıf
+18.11.2019 16:13:59	Talha Mahmut Dereyurt	talhamahmut.dereyurt@stu.fsm.edu.tr	05531298095	Bilgisayar Mühendisliği	Hazırlık
+18.11.2019 17:38:35	Kübra Demir	Kübranurdemir25@hotmail.com	05436758864	Elektrik ve Elektronik Mühendisliği	1. Sınıf
+18.11.2019 18:08:01	Faruk Bera Zulaloglu	farukzulal5886@gmail.com 	05444865346	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 18:08:27	Ahmet Zümberoğlu 	ahmetzumber5@gmail.com	05464920188	Bilgisayar Mühendisliği	2. Sınıf
+18.11.2019 18:10:06	Kevser Büşra Yıldırım	kevserbusra.yildirim@stu.fsm.edu.tr	05459006026	Bilgisayar Mühendisliği	1. Sınıf
+18.11.2019 18:27:42	Enes Karali	eneskarali96@gmail.com	5398391184	Bilgisayar Mühendisliği	4. Sınıf
+18.11.2019 18:45:55	Ali Dereyurt	aliscndacc@gmail.com	5522428605	Bilgisayar Mühendisliği	2. Sınıf
+19.11.2019 01:02:03	ahmet fatih ceyhan	ahmetfatihceyhan@gmail.com	5549875966	Bilgisayar Mühendisliği	3. Sınıf
+19.11.2019 01:03:12	ABDELRAHMAN ABDELLATIF	taha196tr@gmail.com	5383516320	Bilgisayar Mühendisliği	4. Sınıf
+19.11.2019 01:30:29	Nagkichan Moustafa Impram 	nagkichan.ipram@stu.fsm.edu.tr 	5541886199	Bilgisayar Mühendisliği	2. Sınıf
+19.11.2019 17:38:38	Mustafa Şamil ileri	ilerimstf.95@gmail.com	5452551288	Elektrik ve Elektronik Mühendisliği	2. Sınıf
+19.11.2019 17:49:51	Alperen Yasa	alperen.yasa@stu.fsm.edu.tr	05318335115	Elektrik ve Elektronik Mühendisliği	1. Sınıf
+19.11.2019 18:01:58	seyyit ahmet kılıç	seyyitahmet.kilic@gmail.com	5319600910	Elektrik ve Elektronik Mühendisliği	1. Sınıf`
+
+    title.innerText = document.title
+    sample.innerText = toList
+    inp.value = MOUNT
+    //toList()  //array of objects
+</script>
+
+</body>
+</html>
