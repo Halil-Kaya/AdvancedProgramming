@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" sizes="192x192" href="/JS/images/JS.png">
+    <title>Make a Table </title>
+
+  <style>
+    #sample { overflow-x: auto; }
+    table { border-collapse: collapse; }
+    th { color: blue; padding: 5px 5px; }
+    td { 
+        border: 1px solid blue; 
+        padding: 5px 5px; 
+        text-align: center; 
+        position: relative;
+    }
+    td:hover .tip {
+        visibility: visible;
+    }
+    td .tip {
+        visibility: hidden;
+        font-size: small;
+        background-color: blue;
+        color: white;
+        text-align: center;
+        padding: 5px 5px;
+        position: absolute;
+        left: 5px; 
+        top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2 id=title>Homework1 Possion Table (Halil Kaya)</h2>
+<table id="tablo"></table>
+
+<hr>
+<pre id="sample"></pre>
+
+<script src="app.js"></script>
+
+</body>
+</html> 
