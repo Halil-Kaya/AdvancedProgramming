@@ -44,9 +44,9 @@ function checkFiles(b) {
 
     if(isSame){
         let x = remote.value.split("/");
-        out.innerText = x[x.length-1] + " is the same as " + fileName + "\n"
+        out.innerText = "found"
     }else{
-        out.innerText = "all files are diffrent"
+        out.innerText = "diffrent"
     }
 
 }
