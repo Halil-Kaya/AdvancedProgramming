@@ -62,6 +62,8 @@
 
 <p id=out onClick='doClick(event)'>Result:</p>
 
+<p id="secondExample"></p>
+
 <hr />
 <b>Sample code</b>
 <pre id=sample></pre>
@@ -222,35 +224,36 @@ function showrooms(courseid){
 }
 
 function secondExample(){
-
     let keys = []; 
-    for (let std of stdMap) {
-        keys.push(std[0])
-    }
-    let studentid = "316183813"
-    let countFirst = 0
-    let countSecond = 0
-    var firstTime =  Date.now()
-    for (let x of keys) {
-        if(x == studentid){
-            var first =  Date.now() - firstTime;
-            break;
-        }
-        countFirst++
-    }
-    var secondTime = Date.now();
     for (let x of stdMap) {
-        if(x[0] == studentid){
-            var second =  Date.now() - secondTime;
-            break;
-        }
-        countSecond++
+        keys.push(x[0])
     }
-    report("first count: " + countFirst)
-    report("second count: " + countSecond)
-    report("first: " + first)
-    report("second: " + second)
+    let number = 316183813;
+    let count1 = 0
+    let count2 = 0
+    var firstTime =  Date.now()
+    for (let index = number; index < number + 10000; index++) {
+        if(stdMap.has(index.toString())){
+            count1++
+        }
+    }
+    var timeOfHas =  Date.now() - firstTime;
+    firstTime = Date.now()
+    for (let index = number; index < number + 10000; index++) {
+        if(keys.includes(index.toString())){
+            count2++
+        }
+    }
+    var timeOfIncludes =  Date.now() - firstTime;
 
+    var text  = "counter of hash = " + count1
+                                + "\ncounter of inludes = " + count2
+                                + "\nhas milisecond= " + timeOfHas
+                                + "\ninclude milisecond = " + timeOfIncludes + "\n"
+
+
+    document.getElementById("secondExample").innerText = text
+    
 }
 
 const LINK = "https://maeyler.github.io/JS/data/"
