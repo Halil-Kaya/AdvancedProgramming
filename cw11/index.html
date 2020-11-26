@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="/305/images/icon192.png">
+    <title>Battery Status</title>
+
+  <style> /* CSS comment */
+    body { max-width: 440px; }
+    #url { width: 190px; }
+    span, #url { color: blue; }
+  </style>
+</head>
+
+<body>   <!-- HTML comment: Modify all items marked xxx -->
+
+<h2 id=title title="Modify xxx"></h2>
+
+<p>
+  <span id=charging>Şarj durumu: ??</span>
+
+</p>
+
+<p>
+  <span id=level>Level durumu: ??</span>
+
+</p>
+
+<p>
+  <span id="onlineDurum">Online Durum: ??</span>
+</p>
+
+<p>
+  <span id="basilanTus">Basilan Tus: </span>
+</p>
+
+<b>Sample code</b>
+<pre id="sample">This text is not shown. Why?</pre>
+
+<hr />
+
+<script>
+
+  var sample = document.querySelector("#sample") 
+  function initilaize(){
+
+
+    navigator.getBattery().then(b => 
+      console.log(b)
+    )  
+    navigator.getBattery().then(b => 
+      console.log(b)
+    ) 
+
+    onlineDurum.innerText = "Online Durum: " + navigator.onLine;
+  
+    ononline = (e) => onlineDurum.innerText = "Online Durum: " + "navigator.onLine"
+    onoffline = (e) => onlineDurum.innerText = "Online Durum: " + "navigator.onLine"
+    onkeydown = (event) => document.querySelector("#basilanTus").innerText = "Basilan Tus: " + event.key
+  }
+  
+  initilaize()
+
+  sample.innerText = initilaize
+ 
+</script>
+
+</body>
+</html>
