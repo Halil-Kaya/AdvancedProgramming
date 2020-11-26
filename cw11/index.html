@@ -46,8 +46,10 @@
   function initilaize(){
 
 
-    navigator.getBattery().then(b => 
+    navigator.getBattery().then(b => {
+      console.log(b)
       document.querySelector("#sarjDurumu").innerText ="Şarj durumu: " + b.charging
+      }
     )  
     navigator.getBattery().then(b => 
       document.querySelector("#seviyeDurumu").innerText = "Level durumu: " + b.level*100 + "%"
