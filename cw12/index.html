@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="../images/icon192.png">
+  <title>GitHub Users</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+    body {
+        max-width: 440px;
+    }
+    img {
+        padding-right: 12px; 
+        width: 64px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2 id=title>Github Users</h2>
+<input type=text id=usr value=maeyler onChange="readUser()">
+<div>
+<img src="" alt="" id="profil" style="width: 300px;height: 300px;">
+</div>
+<div>
+
+    <p>
+        <h1 id="name"></h1>
+    </p>
+    <p>
+        <h2 id="userName"></h2>
+    </p>
+    <p>
+        <i class="fa fa-users" aria-hidden="true"></i><span id="company"></span>
+    </p>
+    <p>
+        <i class="fa fa-map-marker" aria-hidden="true"></i><span id="location"></span>
+    </p>
+    <p>
+        <i class="fa fa-envelope-o" aria-hidden="true"></i><span id="email"></span>
+    </p>
+    <p>
+        <i class="fa fa-link" aria-hidden="true"></i><span id="blog"></span>
+    </p>
+    
+</div>
+<p id=out></p>
+
+
+<script>
+"use strict";
+
+async function toJSON(url) {
+    let r = await fetch(url)
+    if (!r.ok) error(r.statusText)
+    return r.json()
+}
+async function readUser() {
+    const BR = "<BR>", 
+      URL = "https://api.github.com/users/"
+    let u = await toJSON(URL+usr.value)
+    let profil = document.querySelector("#profil")
+    profil.src = u.avatar_url
+
+    document.querySelector("#name").innerText = u.name?u.name:"no Info"
+    document.querySelector("#userName").innerText = u.login?u.login:"no Info"
+    document.querySelector("#company").innerText = u.company?u.company:"no Info"
+    document.querySelector("#location").innerText = u.location?u.location:"no Info"
+    document.querySelector("#email").innerText = u.email?u.email:"no Info"
+    document.querySelector("#blog").innerText = u.blog?u.blog:"no Info"
+    
+    console.log("foto url : " + u.avatar_url)
+    console.log("company: " + u.company)
+    console.log("location: " + u.location)
+    console.log("email: " + u.email)
+    console.log("blog : " + u.blog)
+}
+
+readUser()
+
+
+</script>
+
+</body>
+</html>
