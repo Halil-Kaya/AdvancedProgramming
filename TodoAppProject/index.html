@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Todo List</title>
+
+
+
+</head>
+
+<body>
+    <div class="container" id="container" style="margin-top:20px;">
+        <div id="todoEkrani">
+            <div class="card row">
+                <div class="card-header" ><span id="todoHeader">Yapılacaklar Listesi</span></div>
+                
+                    <div class="card-body">
+                        <form name="form">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input class="form-control" type="text" name="todo" id = "todo" placeholder="Bir İş Girin">
+                                </div>
+                            </div>
+                            <a class="btn btn-danger" id="todo-form" style="color: wheat;">Yapılacak İş Ekleyin</a>
+                        </form>
+                    
+                    </div>
+            
+                <div class="card-body">
+                        <hr>
+                        <h5 class="card-title" id = "tasks-title">Yapılacaklar</h5>
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input class="form-control" type="text" name="filter" id = "filter" placeholder="Ara">
+                                </div>
+                        </div>
+
+                        <hr>
+                        <ul class="list-group" id="todosPlace">
+                        
+                        </ul>
+                        <hr>  
+                        <a id = "clear-todos" class="btn btn-dark" href="#">Tüm Yapılacakları Temizleyin</a>               
+                    </div>
+                </div>
+                <div class="my-4" style="text-align: center">
+                    <a class="btn btn-outline-warning mx-auto" id="btnCikisYap" style="color: darkslategrey;">Çıkış Yap</a>
+                </div>
+            </div>
+
+        <div class="card row" id="girisEkrani">
+            <div class="card-header">Lütfen Giriş Yapınız</div>
+            <div class="card-body">
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="loginUserName">Kullanıcı Adı</label>
+                        <input class="form-control mb-4" type="text" name="loginUserName" id="loginUserName"
+                            placeholder="Kullanıcı Adı">
+                        <label for="loginPassword">Şifre</label>
+                        <input class="form-control" type="password" name="loginPassword" id="loginPassword" placeholder="Şifre">
+                    </div>
+                </div>
+        
+                <button type="click" id="btnGirisYap" class="btn btn-danger">Giriş Yapınız</button>
+                <a class="btn btn-outline-info" id="btnHesabimYok">Hesabım Yok</a>
+
+            </div>
+        </div>
+
+        <div class="card row" id="kayitEkrani">
+            <div class="card-header">Lütfen Kayıt Yapınız</div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="registerUserName">Kullanıcı Adı</label>
+                        <input class="form-control mb-4" type="text" name="registerUserName" id="registerUserName"
+                            placeholder="Kullanıcı Adı">
+                        <label for="registerPassword">Şifre</label>
+                        <input class="form-control mb-4" type="password" name="registerPassword" id="registerPassword" placeholder="Şifre">
+                        <label for="registerPasswordAgain">Şifre Tekrar</label>
+                        <input class="form-control mb-4" type="password" name="registerPasswordAgain" id="registerPasswordAgain" placeholder="Şifre Tekrar">
+                    </div>
+                </div>
+                <button type="click" id="btnKaydol" class="btn btn-danger">Kaydol</button>
+                <a class="btn btn-outline-info" id="btnHesabimVar">Zaten Hesabım Var</a>
+                
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <script>
+
+        class User{
+
+            constructor(userName,sifre){
+                this.userName = userName
+                this.sifre = sifre
+            }
+
+        }
+
+
+        function getAllUsers(){
+
+            var users = localStorage.getItem("users")
+
+            if(users == null || users == ''){
+                return []
+            }
+
+            return JSON.parse(users)
+
+        }
+
+        function isUserNameUnique(userName){
+
+            var users = getAllUsers()
+            
+            if(users == null){
+                return true
+            }
+
+            var sonuc = true
+            users.forEach(element => {
+                if(element.userName == userName){
+                    sonuc = false
+                }
+            });
+
+            return sonuc
+
+        }
+
+        function addUser(userName,password){
+
+            let users = getAllUsers()
+
+            users.push(new User(userName,password))
+
+            localStorage.setItem("users",JSON.stringify(users))
+
+        }
+
+        function loginUser(userName,password){
+
+            var users = getAllUsers()
+            
+            if(users == null){
+                return false
+            }
+
+            var sonuc = false
+            users.forEach(element => {
+                if(element.userName == userName && element.sifre == password){
+                    sonuc = true
+                }
+            });
+
+            return sonuc
+        }
+
+        function autoLoginUser(){
+
+            var user = localStorage.getItem("user")
+
+            if(user == ''){
+                return null
+            }
+
+            return JSON.parse(user)
+        }
+
+
+
+    </script>
+
+    <script>
+
+        //ul etiketine eklenecek elementi olusturuyorum
+    function todoHtmliOlustur(newTodoText){
+
+        //ekleyeceğim format 
+            /*
+            <li class="list-group-item d-flex justify-content-between">
+                        Todo 1
+                <a href = "#" class ="delete-item">
+                    <i class = "fa fa-remove"></i>
+                </a>
+
+            </li>
+            */
+
+        var iElement = document.createElement("i")
+            
+            iElement.className = "fa fa-remove"
+
+            var aElement = document.createElement("a")
+            
+            aElement.href = "#"
+            aElement.className = "delete-item"
+
+            aElement.appendChild(iElement)
+
+            var liElement = document.createElement("li")
+            
+            liElement.className = "list-group-item d-flex justify-content-between"
+
+            liElement.appendChild(document.createTextNode(newTodoText))
+            liElement.appendChild(aElement)
+
+            return liElement
+        }
+
+
+        var todoEkrani = document.querySelector("#todoEkrani")
+        var girisEkrani = document.querySelector("#girisEkrani")
+        var kayitEkrani = document.querySelector("#kayitEkrani")
+        var btnCikisYap = document.querySelector("#btnCikisYap")
+        var btnHesabimVar = document.querySelector("#btnHesabimVar")
+        var btnKaydol = document.querySelector("#btnKaydol")
+        var btnHesabimYok = document.querySelector("#btnHesabimYok")
+        var btnGirisYap = document.querySelector("#btnGirisYap")
+        var registerUserName = document.querySelector("#registerUserName")
+        var registerPassword = document.querySelector("#registerPassword")
+        var registerPasswordAgain = document.querySelector("#registerPasswordAgain")
+        var loginUserName = document.querySelector("#loginUserName")
+        var loginPassword = document.querySelector("#loginPassword")
+        var todoHeader = document.querySelector("#todoHeader")
+        var todosPlace = document.querySelector("#todosPlace")
+        let listGroup = document.querySelector(".list-group")
+
+
+        todosPlace.innerHTML = ""
+
+        ekranlariGizle()
+
+        var user = autoLoginUser()
+
+        if(user == null){
+
+            girisEkraniGoster()
+
+        }else{
+
+            todoEkraniGoster()
+
+            todoHeader.innerText = user.userName + " Yapılacaklar Listesi"
+
+
+            
+
+
+        }
+
+
+        initializeButtons()
+
+        function initializeButtons(){
+
+            btnGirisYap.addEventListener("click", (e) => {
+
+
+                if(loginUserName.value.length > 0 && loginPassword.value.length > 0){
+
+                    if(loginUser(loginUserName.value,loginPassword.value)){
+
+                        localStorage.setItem("user",JSON.stringify(new User(loginUserName.value,loginPassword.value)))
+                        
+                        todoHeader.innerText = loginUserName.value + " Yapılacaklar Listesi"
+
+                        loginUserName.value = ""
+                        loginPassword.value = ""
+
+                        todoEkraniGoster()
+
+                    }else{
+
+                        alert("Kullanıcı Adı Yada Şifre Yanlış")
+
+                    }
+
+                }else{
+
+                    alert("Lütfen Bilgileri Giriniz!")
+
+                }
+
+
+            })
+
+            btnKaydol.addEventListener("click", (e) => {
+
+                if(registerUserName.value.length > 0 && registerPassword.value.length > 0 && registerPasswordAgain.value.length > 0){
+
+                    if(registerPassword.value.length > 4){
+                        
+                        if(registerPassword.value == registerPasswordAgain.value){
+                            
+                            if(isUserNameUnique(registerUserName.value)){
+                                
+                                addUser(registerUserName.value,registerPassword.value)
+
+                                registerUserName.value = ""
+                                registerPassword.value = ""
+                                registerPasswordAgain.value = ""
+
+                                girisEkraniGoster()
+
+                            }else{
+
+                                alert("Böyle Bir Kullanıcı Adı Zaten Var")
+
+                            }
+
+                        }else{
+
+                            alert("Şifreler Uyuşmuyor")
+
+                        }
+
+                    }else{
+
+                        alert("Şifreniz 4 Haneden Fazla Olmalı")
+
+                    }
+
+                }else{
+
+                    alert("Lütfen Bilgileri Giriniz!")
+
+                }
+
+
+            })
+
+            btnHesabimVar.addEventListener("click", (e) => {
+
+                girisEkraniGoster()
+
+            })
+
+            btnHesabimYok.addEventListener("click",(e) => {
+
+                kayitEkraniGoster()
+
+            })
+
+            btnCikisYap.addEventListener("click",(e) => {
+
+                cikisYap()
+                girisEkraniGoster()
+
+            })
+
+        }
+
+        
+
+        function getUser() {
+
+            var user = localStorage.getItem("user")
+
+            if(user == null || user == ''){
+                
+                return null
+            
+            }
+
+            return JSON.parse(user)
+        }
+
+        function todoListesineEkle(todoText){
+            //gelen todoyu html e dönüştürüp ul etiketine ekliyorum
+            listGroup.appendChild(todoHtmliOlustur(todoText))
+        }
+
+
+        function cikisYap(){
+            localStorage.setItem("user",null)
+        }
+        function ekranlariGizle(){
+            todoEkraniGizle()
+            girisEkraniGizle()
+            kayitEkraniGizle()
+        }
+
+        function todoEkraniGoster(){
+            todoEkrani.style.display = "block"
+            girisEkraniGizle()
+            kayitEkraniGizle()
+
+            user = autoLoginUser()
+
+            if(user == null){
+
+                girisEkraniGoster()
+
+            }else{
+
+                todoHeader.innerText = user.userName + " Yapılacaklar Listesi"
+            
+            }
+
+
+
+            listGroup.innerHTML = ""
+
+            
+
+            let todos = []   
+            if(localStorage.getItem("todos") !== null){
+                todos = JSON.parse(localStorage.getItem("todos"))
+            }
+
+
+            //diziyi donerek teker teker htmle ekliyorum
+            todos.forEach(element => {
+                
+                if(element.userName == user.userName){
+
+                    //htmldeki ul etiketine ekliyor
+                    todoListesineEkle(element.todo)
+
+                }
+
+
+            });
+
+        }
+
+        function todoEkraniGizle(){
+            todoEkrani.style.display = "none"
+            listGroup.innerHTML = ""
+        }
+
+        function girisEkraniGoster(){
+            girisEkrani.style.display = "block"
+            kayitEkraniGizle()
+            todoEkraniGizle()
+        }
+
+        function girisEkraniGizle(){
+            girisEkrani.style.display = "none"
+        }
+
+
+        function kayitEkraniGoster(){
+            kayitEkrani.style.display = "block"
+            todoEkraniGizle()
+            girisEkraniGizle()
+        }
+
+        function kayitEkraniGizle(){
+            kayitEkrani.style.display = "none"
+        } 
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!--<script src="app.js"></script>-->
+    <script src="app.js"></script>
+    <script src="fonks.js"></script>
+
+
+</body>
+
+</html>
