@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,45 +13,42 @@
     <style>
 
     .container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  
     }
-    .container {
-    min-width: 992px !important;
-  }
-    @media (min-width: 576px) {
-  .container {
-    max-width: 100%;
-    }
-    }
-
-    @media (min-width: 768px) {
-    .container {
-        max-width: 720px;
-    }
+   
+    @media (max-width: 576px) {
+      .container {
+    width: 95%;
+   
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+  
     }
 
-    @media (min-width: 992px) {
-    .container {
-        max-width: 960px;
-    }
+body {
+        width:100%;
     }
 
-    @media (min-width: 1200px) {
-    .container {
-        max-width: 1140px;
-    }
+    #todoEkrani{
+      width: 90%;
+      margin-left: 5%;
+      margin-right:5%;
+  
+}
+
+.card{
+  width:95%;
+}
+
     }
 
     body {
-        min-width: 992px !important;
+        min-width:100%;
     }
-    .container {
-        min-width: 992px !important;
-    }
+    
 
     .navbar > .container,
 .navbar > .container-fluid {
@@ -185,12 +183,8 @@
   margin-bottom: 1rem;
 }
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
-.col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
-.col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
-.col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
-.col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
-.col-xl-auto {
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
+.col-md-auto {
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -353,6 +347,23 @@ li:hover{
 
 body{
     width: 400px;
+}
+
+.form-control{
+  width: 80%;
+  margin-left:10% ;
+  margin-right:10% ;
+
+}
+
+label{
+  margin-left: 10%;
+}
+
+.card{
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
     </style>
@@ -527,10 +538,6 @@ body{
         }
 
 
-
-    </script>
-
-    <script>
 
         //ul etiketine eklenecek elementi olusturuyorum
     function todoHtmliOlustur(newTodoText){
@@ -810,11 +817,227 @@ body{
             kayitEkrani.style.display = "none"
         } 
 
+
+        class Todo{
+
+constructor(userName,todo){
+    this.userName = userName
+    this.todo = todo
+}
+
+}
+
+
+
+
+let cardBody = document.querySelectorAll(".card-body")[1]
+let headerCardBody = document.querySelector("#todo-form")
+let newTodoInput = document.querySelector(".form-control")
+let searchInput = document.querySelectorAll(".form-control")[1]
+
+
+
+
+
+
+//todo eklendiginde calisan yer
+headerCardBody.addEventListener("click",function(e){
+
+
+//ekliyecegim todo
+let newTodoText = newTodoInput.value
+
+//bos mu diye kontrol ediyorum
+if(newTodoText != ""){
+    
+    //burda yeni bir todo ekliyecem
+    //ekliyeceğim yer: list-group (ul etiketine)
+
+    //once çerez olarak ekliyorum eğer işlem başarılıysa true değilse false dönüyor
+    //eğer ekleme işlemi başarılıysa htmle de eklyorum
+    if(localStorageEkle(newTodoText)){
+        
+        //htmldeki ul etiketine ekliyor
+        listeyeEkle(newTodoText)
+
+    }
+
+}
+
+newTodoInput.value = ""
+
+e.preventDefault()
+
+})
+
+
+
+//tiklanilan olaya göre işlem yapıyorum
+cardBody.addEventListener("click",function(e){
+
+//todonun silme yerine tiklandiysa todoyu siliyorum
+if(e.target.className == "fa fa-remove"){
+
+    //dolaylı yoldan parentini buluyorum
+    var todo = e.target.parentElement.parentElement
+    var todoText = todo.textContent
+
+    
+    //todo yu çerezlerden (depodan) siliyorum
+    localStoragedenSil(todoText)
+
+    //elementi html den siliyorum
+    todo.remove()
+
+}//tüm todolari temizle butonuna tıklandıysa her şeyi siliyorum
+else if(e.target.id == "clear-todos"){
+    
+    if(confirm("Emin misin?")){
+
+        //htmli temizliyorum
+        listGroup.innerHTML = ""
+        
+        let todos = []   
+        if(localStorage.getItem("todos") !== null){
+            todos = JSON.parse(localStorage.getItem("todos"))
+        }
+
+        var user = JSON.parse(localStorage.getItem("user"))
+
+        let targetIndexs = []
+        todos.forEach((item,index) => {
+    
+            if(item.userName == user.userName){
+                targetIndexs.push(index)
+            }
+            
+    
+        })
+        
+        //reverse yapiyorum cunku silerken index siralari kayiyor
+        targetIndexs = targetIndexs.reverse()
+        targetIndexs.forEach(item => {
+            todos.splice(item,1)
+        })
+
+
+        localStorage.setItem("todos",JSON.stringify(todos))
+
+    
+
+        
+    }
+    
+    
+}
+
+e.preventDefault()
+})
+
+
+searchInput.addEventListener("keyup",function(e){
+
+const filterValue = e.target.value.toLowerCase();
+
+const listItems = document.querySelectorAll(".list-group-item");
+
+listItems.forEach(function(item){
+
+    const text = item.textContent.toLowerCase();
+
+    if(text.indexOf(filterValue) === -1){
+        item.setAttribute("style","display : none !important")
+    }else{
+        item.setAttribute("style","display : block ")
+    }
+    
+
+})
+
+
+})
+
+//çereze(depoya) ekliyorum
+function localStorageEkle(newTodoText){
+
+//tum todolari getiriyorum
+let todos = todolariGetir()
+
+console.log("todos: ")
+console.log(todos)
+
+buTododanVarMi = false
+
+todos.forEach(element => {
+    
+    if(element.userName == user.userName){
+
+        if(element.todo == newTodoText){
+            buTododanVarMi = true
+        }
+
+    }
+
+});
+
+if(buTododanVarMi){
+
+    alert("bu tododan zaten var")
+    return false
+
+}else{
+
+    todos.push(new Todo(user.userName,newTodoText))
+    localStorage.setItem("todos",JSON.stringify(todos))
+    return true
+
+}
+
+}
+
+//çerezlerden(depodan) siliyorum
+function localStoragedenSil(todoText){
+
+let todos = todolariGetir()
+
+var user = JSON.parse(localStorage.getItem("user"))
+
+let targetIndex = 0
+todos.forEach((item,index) => {
+
+    if(item.userName == user.userName && item.todo == todoText){
+        targetIndex = index
+    }
+    
+
+})
+
+
+todos.splice(targetIndex,1)
+
+localStorage.setItem("todos",JSON.stringify(todos))
+
+}
+
+
+
+//çerezlerdeki(depodaki) todo ları getiriyorum
+function todolariGetir(){
+let todos = []   
+if(localStorage.getItem("todos") !== null){
+    todos = JSON.parse(localStorage.getItem("todos"))
+}
+return todos
+}
+
+//ul etiketine ekliyorum
+function listeyeEkle(todoText){
+//gelen todoyu html e dönüştürüp ul etiketine ekliyorum
+listGroup.appendChild(todoHtmliOlustur(todoText))
+}
+
     </script>
 
-
-    <script src="app.js"></script>
-    <script src="fonks.js"></script>
 
 
 </body>
