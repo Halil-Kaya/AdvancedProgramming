@@ -502,7 +502,7 @@ label{
 
             let users = getAllUsers()
 
-            users.push(new User(userName,password))
+            users.push(new User(userName,stringToHash(password)))
 
             localStorage.setItem("users",JSON.stringify(users))
 
@@ -515,6 +515,8 @@ label{
             if(users == null){
                 return false
             }
+
+            password = stringToHash(password)
 
             var sonuc = false
             users.forEach(element => {
@@ -537,6 +539,22 @@ label{
             return JSON.parse(user)
         }
 
+
+        //şifreyi hashlamek için kullanıyorum
+        function stringToHash(string) { 
+            
+            var hash = 0; 
+            
+            if (string.length == 0) return hash; 
+            
+            for (i = 0; i < string.length; i++) { 
+                char = string.charCodeAt(i); 
+                hash = ((hash << 5) - hash) + char; 
+                hash = hash & hash; 
+            } 
+            
+            return hash; 
+        } 
 
 
         //ul etiketine eklenecek elementi olusturuyorum
@@ -627,7 +645,7 @@ label{
 
                     if(loginUser(loginUserName.value,loginPassword.value)){
 
-                        localStorage.setItem("user",JSON.stringify(new User(loginUserName.value,loginPassword.value)))
+                        localStorage.setItem("user",JSON.stringify(new User(loginUserName.value, stringToHash(loginPassword.value))))
                         
                         todoHeader.innerText = loginUserName.value + " Yapılacaklar Listesi"
 
