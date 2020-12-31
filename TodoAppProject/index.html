@@ -1,567 +1,594 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" sizes="192x192" href="../image/icon192.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" sizes="192x192" href="../image/icon192.png" />
     <title>Todo List</title>
 
     <style>
-
-    .container {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-  
-    }
-   
-    @media (max-width: 576px) {
       .container {
-    width: 95%;
-   
-    margin-right: 2.5%;
-    margin-left: 2.5%;
-  
-    }
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
 
-body {
-        width:100%;
-    }
+      @media (max-width: 576px) {
+        .container {
+          width: 95%;
 
-    #todoEkrani{
-      width: 90%;
-      margin-left: 5%;
-      margin-right:5%;
-  
-}
+          margin-right: 2.5%;
+          margin-left: 2.5%;
+        }
 
-.card{
-  width:95%;
-}
+        body {
+          width: 100%;
+        }
 
-    }
+        #todoEkrani {
+          width: 90%;
+          margin-left: 5%;
+          margin-right: 5%;
+        }
 
-    body {
-        min-width:100%;
-    }
-    
+        .card {
+          width: 95%;
+        }
+      }
 
-    .navbar > .container,
-.navbar > .container-fluid {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
+      body {
+        min-width: 100%;
+      }
 
-.card {
-  position: relative;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-}
+      .navbar > .container,
+      .navbar > .container-fluid {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+      }
 
-.card > hr {
-  margin-right: 0;
-  margin-left: 0;
-}
+      .card {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.25rem;
+      }
 
-.card > .list-group:first-child .list-group-item:first-child {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-}
+      .card > hr {
+        margin-right: 0;
+        margin-left: 0;
+      }
 
-.card > .list-group:last-child .list-group-item:last-child {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
+      .card > .list-group:first-child .list-group-item:first-child {
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+      }
 
-.card-body {
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding: 1.25rem;
-}
+      .card > .list-group:last-child .list-group-item:last-child {
+        border-bottom-right-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
 
-.card-title {
-  margin-bottom: 0.75rem;
-}
+      .card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1.25rem;
+      }
 
-.card-subtitle {
-  margin-top: -0.375rem;
-  margin-bottom: 0;
-}
+      .card-title {
+        margin-bottom: 0.75rem;
+      }
 
-.card-text:last-child {
-  margin-bottom: 0;
-}
+      .card-subtitle {
+        margin-top: -0.375rem;
+        margin-bottom: 0;
+      }
 
-.card-link:hover {
-  text-decoration: none;
-}
+      .card-text:last-child {
+        margin-bottom: 0;
+      }
 
-.card-link + .card-link {
-  margin-left: 1.25rem;
-}
+      .card-link:hover {
+        text-decoration: none;
+      }
 
-.card-header {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-}
+      .card-link + .card-link {
+        margin-left: 1.25rem;
+      }
 
-.card-header:first-child {
-  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
-}
+      .card-header {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: rgba(0, 0, 0, 0.03);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      }
 
-.card-header + .list-group .list-group-item:first-child {
-  border-top: 0;
-}
+      .card-header:first-child {
+        border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+      }
 
-.card-footer {
-  padding: 0.75rem 1.25rem;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-top: 1px solid rgba(0, 0, 0, 0.125);
-}
-.row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-.card-header {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-}
+      .card-header + .list-group .list-group-item:first-child {
+        border-top: 0;
+      }
 
-.card-header:first-child {
-  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
-}
+      .card-footer {
+        padding: 0.75rem 1.25rem;
+        background-color: rgba(0, 0, 0, 0.03);
+        border-top: 1px solid rgba(0, 0, 0, 0.125);
+      }
+      .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+      }
+      .card-header {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: rgba(0, 0, 0, 0.03);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      }
 
-.card-header + .list-group .list-group-item:first-child {
-  border-top: 0;
-}
-.card-body {
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding: 1.25rem;
-}
-.form-row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -5px;
-  margin-left: -5px;
-}
+      .card-header:first-child {
+        border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+      }
 
-.form-row > .col,
-.form-row > [class*="col-"] {
-  padding-right: 5px;
-  padding-left: 5px;
-}
-.form-group {
-  margin-bottom: 1rem;
-}
+      .card-header + .list-group .list-group-item:first-child {
+        border-top: 0;
+      }
+      .card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1.25rem;
+      }
+      .form-row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -5px;
+        margin-left: -5px;
+      }
 
-.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
-.col-md-auto {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.form-control {
-  display: block;
-  width: 100%;
-  height: calc(2.25rem + 2px);
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-.btn {
-  display: inline-block;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+      .form-row > .col,
+      .form-row > [class*="col-"] {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
 
-.btn-danger {
-  color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
+      .col-md-1,
+      .col-md-2,
+      .col-md-3,
+      .col-md-4,
+      .col-md-5,
+      .col-md-6,
+      .col-md-7,
+      .col-md-8,
+      .col-md-9,
+      .col-md-10,
+      .col-md-11,
+      .col-md-12,
+      .col-md,
+      .col-md-auto {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+      .form-control {
+        display: block;
+        width: 100%;
+        height: calc(2.25rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+      .btn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
 
-.btn-danger:hover {
-  color: #fff;
-  background-color: #c82333;
-  border-color: #bd2130;
-}
+      .btn-danger {
+        border: 2px solid orange;
+        color: wheat;
+        background: green;
+        padding: 5px 5px 5px 5px;
+        border-radius: 8px;
+      }
 
-.btn-danger:focus, .btn-danger.focus {
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
-}
+      .btn-danger:hover {
+        color: green;
+        background: white;
+        border-color: orange;
+      }
 
-.btn-danger.disabled, .btn-danger:disabled {
-  color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
+      .btn-danger:focus,
+      .btn-danger.focus {
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+      }
 
-.card-title {
-  margin-bottom: 0.75rem;
-}
+      .btn-danger.disabled,
+      .btn-danger:disabled {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+      }
 
-.mt-0,
-.my-0 {
-  margin-top: 0 !important;
-}
+      .card-title {
+        margin-bottom: 0.75rem;
+      }
 
-.btn-outline-info {
-  color: #17a2b8;
-  background-color: transparent;
-  background-image: none;
-  border-color: #17a2b8;
-}
+      .mt-0,
+      .my-0 {
+        margin-top: 0 !important;
+      }
 
-.btn-outline-info:hover {
-  color: #fff;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
-}
+      .btn-outline-info {
+        color: #ffffff;
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+      }
 
-.btn-outline-info:focus, .btn-outline-info.focus {
-  box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5);
-}
+      .btn-outline-info:hover {
+        color: #17a2b8;
+        background-color: #ffffff;
+      }
 
-.btn-outline-info.disabled, .btn-outline-info:disabled {
-  color: #17a2b8;
-  background-color: transparent;
-}
-.mb-4,
-.my-4 {
-  margin-bottom: 1.5rem !important;
-}
-.btn-outline-dark {
-  color: #343a40;
-  background-color: transparent;
-  background-image: none;
-  border-color: #343a40;
-}
+      .mb-4,
+      .my-4 {
+        margin-bottom: 1.5rem !important;
+      }
+      .btn-dark {
+        color: #fff;
+        background-color: #343a40;
+        border-color: #343a40;
+        text-decoration: none;
+      }
 
-.btn-outline-dark:hover {
-  color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
-}
+      .btn-dark:hover {
+        color: #343a40;
+        background-color: transparent;
+        border-color: #343a40;
+      }
 
-.btn-outline-dark:focus, .btn-outline-dark.focus {
-  box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
-}
+      .mr-auto,
+      .mx-auto {
+        margin-right: auto !important;
+      }
+      .btn-warning {
+        color: white;
+        background-color: #ff3838;
+        margin-top: 5px;
+      }
 
-.btn-outline-dark.disabled, .btn-outline-dark:disabled {
-  color: #343a40;
-  background-color: transparent;
-}
+      .btn-warning:hover {
+        color: #ff3838;
+        background-color: #ffffff;
+        border-color: #ff3838;
+      }
 
-.btn-outline-dark:not(:disabled):not(.disabled):active, .btn-outline-dark:not(:disabled):not(.disabled).active,
-.show > .btn-outline-dark.dropdown-toggle {
-  color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
-}
-.mr-auto,
-.mx-auto {
-  margin-right: auto !important;
-}
-.btn-outline-warning {
-  color: #ffc107;
-  background-color: transparent;
-  background-image: none;
-  border-color: #ffc107;
-}
+      .card > .list-group:first-child .list-group-item:first-child {
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+      }
+      .d-flex {
+        display: -ms-flexbox !important;
+        display: flex !important;
+      }
+      .justify-content-between {
+        -ms-flex-pack: justify !important;
+        justify-content: space-between !important;
+      }
 
-.btn-outline-warning:hover {
-  color: #212529;
-  background-color: #ffc107;
-  border-color: #ffc107;
-}
+      li:hover {
+        color: brown;
+        background-color: cadetblue;
+      }
 
-.btn-outline-warning:focus, .btn-outline-warning.focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
-}
-.card > .list-group:first-child .list-group-item:first-child {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-}
-.d-flex {
-  display: -ms-flexbox !important;
-  display: flex !important;
-}
-.justify-content-between {
-  -ms-flex-pack: justify !important;
-  justify-content: space-between !important;
-}
+      body {
+        width: 400px;
+      }
 
-li:hover{
-    color: brown;
-    background-color: cadetblue;
-}
+      .form-control {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+      }
 
-body{
-    width: 400px;
-}
+      label {
+        margin-left: 10%;
+      }
 
-.form-control{
-  width: 80%;
-  margin-left:10% ;
-  margin-right:10% ;
+      .card {
+        width: 98%;
+        margin-left: 1%;
+        margin-right: 1%;
+      }
 
-}
-
-label{
-  margin-left: 10%;
-}
-
-.card{
-  width: 98%;
-  margin-left: 1%;
-  margin-right: 1%;
-}
-
+      li {
+        font-size: 18px;
+        border: 2px solid gray;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        padding-left: 5px;
+        padding: 5px;
+      }
     </style>
+  </head>
 
+  <body>
+    <div class="container" id="container" style="margin-top: 20px">
+      <div id="todoEkrani">
+        <div class="card row">
+          <div class="card-header" style="display: flex; height: 18px">
+            <span id="yapilacaklarListesi" style="width: 90%"
+              >Yapılacaklar Listesi</span
+            >
+            <span id="todoHeader" style="width: 10%; font-size: 20px"
+              >Kullanici Adi</span
+            >
+          </div>
 
-</head>
-
-<body>
-    <div class="container" id="container" style="margin-top:20px;">
-        <div id="todoEkrani">
-            <div class="card row">
-                <div class="card-header" ><span id="todoHeader">Yapılacaklar Listesi</span></div>
-                
-                    <div class="card-body">
-                        <form name="form">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <input class="form-control" type="text" name="todo" id = "todo" placeholder="Bir İş Girin">
-                                </div>
-                            </div>
-                            <a class="btn btn-danger" id="todo-form" style="color: wheat;">Yapılacak İş Ekleyin</a>
-                        </form>
-                    
-                    </div>
-            
-                <div class="card-body">
-                        <hr>
-                        <h5 class="card-title" id = "tasks-title">Yapılacaklar</h5>
-                        <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <input class="form-control" type="text" name="filter" id = "filter" placeholder="Ara">
-                                </div>
-                        </div>
-
-                        <hr>
-                        <ul class="list-group" id="todosPlace">
-                        
-                        </ul>
-                        <hr>  
-                        <a id = "clear-todos" class="btn btn-outline-dark" href="#">Tüm Yapılacakları Temizleyin</a>               
-                    </div>
+          <div class="card-body">
+            <div name="form" id="todoForm">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="todo"
+                    id="todo"
+                    placeholder="Bir İş Girin"
+                  />
                 </div>
-                <div class="my-4" style="text-align: center">
-                    <a class="btn btn-outline-warning mx-auto" id="btnCikisYap" style="color: darkslategrey;">Çıkış Yap</a>
-                </div>
+              </div>
+              <a class="btn btn-danger" id="todo-form">Yapılacak İş Ekleyin</a>
             </div>
-        <div class="card row" id="girisEkrani">
-            <div class="card-header">Lütfen Giriş Yapınız</div>
-            <div class="card-body">
+          </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="loginUserName">Kullanıcı Adı</label>
-                        <input class="form-control mb-4" type="text" name="loginUserName" id="loginUserName"
-                            placeholder="Kullanıcı Adı">
-                        <label for="loginPassword">Şifre</label>
-                        <input class="form-control" type="password" name="loginPassword" id="loginPassword" placeholder="Şifre">
-                    </div>
-                </div>
-        
-                <button type="click" id="btnGirisYap" class="btn btn-danger">Giriş Yapınız</button>
-                <a class="btn btn-outline-info" id="btnHesabimYok">Hesabım Yok</a>
-
+          <div class="card-body">
+            <hr />
+            <h5
+              class="card-title"
+              id="tasks-title"
+              style="font-size: 17px; font-weight: 500"
+            >
+              Yapılacaklar
+            </h5>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input
+                  class="form-control"
+                  type="text"
+                  name="filter"
+                  id="filter"
+                  placeholder="Ara"
+                />
+              </div>
             </div>
+
+            <hr />
+            <ul class="list-group" id="todosPlace"></ul>
+            <hr />
+            <a id="clear-todos" class="btn btn-dark" href="#"
+              >Tüm Yapılacakları Temizleyin</a
+            >
+          </div>
         </div>
-
-        <div class="card row" id="kayitEkrani">
-            <div class="card-header">Lütfen Kayıt Yapınız</div>
-            <div class="card-body">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="registerUserName">Kullanıcı Adı</label>
-                        <input class="form-control mb-4" type="text" name="registerUserName" id="registerUserName"
-                            placeholder="Kullanıcı Adı">
-                        <label for="registerPassword">Şifre</label>
-                        <input class="form-control mb-4" type="password" name="registerPassword" id="registerPassword" placeholder="Şifre">
-                        <label for="registerPasswordAgain">Şifre Tekrar</label>
-                        <input class="form-control mb-4" type="password" name="registerPasswordAgain" id="registerPasswordAgain" placeholder="Şifre Tekrar">
-                    </div>
-                </div>
-                <button type="click" id="btnKaydol" class="btn btn-danger">Kaydol</button>
-                <a class="btn btn-outline-info" id="btnHesabimVar">Zaten Hesabım Var</a>
-                
-            </div>
+        <div class="my-4" style="text-align: center">
+          <a class="btn btn-warning mx-auto" id="btnCikisYap">Çıkış Yap</a>
         </div>
+      </div>
+      <div class="card row" id="girisEkrani">
+        <div class="card-header">Lütfen Giriş Yapınız</div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="loginUserName">Kullanıcı Adı</label>
+              <input
+                class="form-control mb-4"
+                type="text"
+                name="loginUserName"
+                id="loginUserName"
+                placeholder="Kullanıcı Adı"
+              />
+              <label for="loginPassword">Şifre</label>
+              <input
+                class="form-control"
+                type="password"
+                name="loginPassword"
+                id="loginPassword"
+                placeholder="Şifre"
+              />
+            </div>
+          </div>
 
+          <button type="click" id="btnGirisYap" class="btn btn-danger">
+            Giriş Yapınız
+          </button>
+          <a class="btn btn-outline-info" id="btnHesabimYok">Hesabım Yok</a>
+        </div>
+      </div>
 
-
+      <div class="card row" id="kayitEkrani">
+        <div class="card-header">Lütfen Kayıt Yapınız</div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="registerUserName">Kullanıcı Adı</label>
+              <input
+                class="form-control mb-4"
+                type="text"
+                name="registerUserName"
+                id="registerUserName"
+                placeholder="Kullanıcı Adı"
+              />
+              <label for="registerPassword">Şifre</label>
+              <input
+                class="form-control mb-4"
+                type="password"
+                name="registerPassword"
+                id="registerPassword"
+                placeholder="Şifre"
+              />
+              <label for="registerPasswordAgain">Şifre Tekrar</label>
+              <input
+                class="form-control mb-4"
+                type="password"
+                name="registerPasswordAgain"
+                id="registerPasswordAgain"
+                placeholder="Şifre Tekrar"
+              />
+            </div>
+          </div>
+          <button type="click" id="btnKaydol" class="btn btn-danger">
+            Kaydol
+          </button>
+          <a class="btn btn-outline-info" id="btnHesabimVar"
+            >Zaten Hesabım Var</a
+          >
+        </div>
+      </div>
     </div>
 
+    <footer style="font-size: 16px; height: 10%">
+      developed by Halil Kaya
+    </footer>
 
     <script>
+      class User {
+        constructor(userName, sifre) {
+          this.userName = userName;
+          this.sifre = sifre;
+        }
+      }
 
-        class User{
+      function getAllUsers() {
+        var users = localStorage.getItem("users");
 
-            constructor(userName,sifre){
-                this.userName = userName
-                this.sifre = sifre
-            }
-
+        if (users == null || users == "") {
+          return [];
         }
 
+        return JSON.parse(users);
+      }
 
-        function getAllUsers(){
+      function isUserNameUnique(userName) {
+        var users = getAllUsers();
 
-            var users = localStorage.getItem("users")
-
-            if(users == null || users == ''){
-                return []
-            }
-
-            return JSON.parse(users)
-
+        if (users == null) {
+          return true;
         }
 
-        function isUserNameUnique(userName){
+        var sonuc = true;
+        users.forEach((element) => {
+          if (element.userName == userName) {
+            sonuc = false;
+          }
+        });
 
-            var users = getAllUsers()
-            
-            if(users == null){
-                return true
-            }
+        return sonuc;
+      }
 
-            var sonuc = true
-            users.forEach(element => {
-                if(element.userName == userName){
-                    sonuc = false
-                }
-            });
+      function addUser(userName, password) {
+        let users = getAllUsers();
 
-            return sonuc
+        users.push(new User(userName, stringToHash(password)));
 
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+
+      function loginUser(userName, password) {
+        var users = getAllUsers();
+
+        if (users == null) {
+          return false;
         }
 
-        function addUser(userName,password){
+        password = stringToHash(password);
 
-            let users = getAllUsers()
+        var sonuc = false;
+        users.forEach((element) => {
+          if (element.userName == userName && element.sifre == password) {
+            sonuc = true;
+          }
+        });
 
-            users.push(new User(userName,stringToHash(password)))
+        return sonuc;
+      }
 
-            localStorage.setItem("users",JSON.stringify(users))
+      function autoLoginUser() {
+        var user = localStorage.getItem("user");
 
+        if (user == "") {
+          return null;
         }
 
-        function loginUser(userName,password){
+        return JSON.parse(user);
+      }
 
-            var users = getAllUsers()
-            
-            if(users == null){
-                return false
-            }
+      //şifreyi hashlamek için kullanıyorum
+      function stringToHash(string) {
+        var hash = 0;
 
-            password = stringToHash(password)
+        if (string.length == 0) return hash;
 
-            var sonuc = false
-            users.forEach(element => {
-                if(element.userName == userName && element.sifre == password){
-                    sonuc = true
-                }
-            });
-
-            return sonuc
+        for (i = 0; i < string.length; i++) {
+          char = string.charCodeAt(i);
+          hash = (hash << 5) - hash + char;
+          hash = hash & hash;
         }
 
-        function autoLoginUser(){
+        return hash;
+      }
 
-            var user = localStorage.getItem("user")
-
-            if(user == ''){
-                return null
-            }
-
-            return JSON.parse(user)
-        }
-
-
-        //şifreyi hashlamek için kullanıyorum
-        function stringToHash(string) { 
-            
-            var hash = 0; 
-            
-            if (string.length == 0) return hash; 
-            
-            for (i = 0; i < string.length; i++) { 
-                char = string.charCodeAt(i); 
-                hash = ((hash << 5) - hash) + char; 
-                hash = hash & hash; 
-            } 
-            
-            return hash; 
-        } 
-
-
-        //ul etiketine eklenecek elementi olusturuyorum
-    function todoHtmliOlustur(newTodoText){
-
-        //ekleyeceğim format 
-            /*
+      //ul etiketine eklenecek elementi olusturuyorum
+      function todoHtmliOlustur(newTodoText) {
+        //ekleyeceğim format
+        /*
             <li class="list-group-item d-flex justify-content-between">
                         Todo 1
                 <a href = "#" class ="delete-item">
@@ -571,493 +598,399 @@ label{
             </li>
             */
 
-        var iElement = document.createElement("i")
-            
-            iElement.className = "fa fa-remove"
+        var iElement = document.createElement("i");
 
-            var aElement = document.createElement("a")
-            
-            aElement.href = "#"
-            aElement.className = "delete-item"
+        iElement.className = "fa fa-remove";
 
-            aElement.appendChild(iElement)
+        var aElement = document.createElement("a");
 
-            var liElement = document.createElement("li")
-            
-            liElement.className = "list-group-item d-flex justify-content-between"
+        aElement.href = "#";
+        aElement.className = "delete-item";
 
-            liElement.appendChild(document.createTextNode(newTodoText))
-            liElement.appendChild(aElement)
+        aElement.appendChild(iElement);
 
-            return liElement
-        }
+        var liElement = document.createElement("li");
 
+        liElement.className = "list-group-item d-flex justify-content-between";
 
-        var todoEkrani = document.querySelector("#todoEkrani")
-        var girisEkrani = document.querySelector("#girisEkrani")
-        var kayitEkrani = document.querySelector("#kayitEkrani")
-        var btnCikisYap = document.querySelector("#btnCikisYap")
-        var btnHesabimVar = document.querySelector("#btnHesabimVar")
-        var btnKaydol = document.querySelector("#btnKaydol")
-        var btnHesabimYok = document.querySelector("#btnHesabimYok")
-        var btnGirisYap = document.querySelector("#btnGirisYap")
-        var registerUserName = document.querySelector("#registerUserName")
-        var registerPassword = document.querySelector("#registerPassword")
-        var registerPasswordAgain = document.querySelector("#registerPasswordAgain")
-        var loginUserName = document.querySelector("#loginUserName")
-        var loginPassword = document.querySelector("#loginPassword")
-        var todoHeader = document.querySelector("#todoHeader")
-        var todosPlace = document.querySelector("#todosPlace")
-        let listGroup = document.querySelector(".list-group")
+        liElement.appendChild(document.createTextNode(newTodoText));
+        liElement.appendChild(aElement);
 
+        return liElement;
+      }
 
-        todosPlace.innerHTML = ""
+      var todoEkrani = document.querySelector("#todoEkrani");
+      var girisEkrani = document.querySelector("#girisEkrani");
+      var kayitEkrani = document.querySelector("#kayitEkrani");
+      var btnCikisYap = document.querySelector("#btnCikisYap");
+      var btnHesabimVar = document.querySelector("#btnHesabimVar");
+      var btnKaydol = document.querySelector("#btnKaydol");
+      var btnHesabimYok = document.querySelector("#btnHesabimYok");
+      var btnGirisYap = document.querySelector("#btnGirisYap");
+      var registerUserName = document.querySelector("#registerUserName");
+      var registerPassword = document.querySelector("#registerPassword");
+      var registerPasswordAgain = document.querySelector(
+        "#registerPasswordAgain"
+      );
+      var loginUserName = document.querySelector("#loginUserName");
+      var loginPassword = document.querySelector("#loginPassword");
+      var todoHeader = document.querySelector("#todoHeader");
+      var todosPlace = document.querySelector("#todosPlace");
+      let listGroup = document.querySelector(".list-group");
 
-        ekranlariGizle()
+      todosPlace.innerHTML = "";
 
-        var user = autoLoginUser()
+      ekranlariGizle();
 
-        if(user == null){
+      var user = autoLoginUser();
 
-            girisEkraniGoster()
+      if (user == null) {
+        girisEkraniGoster();
+      } else {
+        todoEkraniGoster();
 
-        }else{
+        todoHeader.innerText = user.userName;
+      }
 
-            todoEkraniGoster()
+      initializeButtons();
 
-            todoHeader.innerText = user.userName + " Yapılacaklar Listesi"
+      function initializeButtons() {
+        btnGirisYap.addEventListener("click", (e) => {
+          if (
+            loginUserName.value.length > 0 &&
+            loginPassword.value.length > 0
+          ) {
+            if (loginUser(loginUserName.value, loginPassword.value)) {
+              localStorage.setItem(
+                "user",
+                JSON.stringify(
+                  new User(
+                    loginUserName.value,
+                    stringToHash(loginPassword.value)
+                  )
+                )
+              );
 
+              todoHeader.innerText = loginUserName.value;
 
-            
+              loginUserName.value = "";
+              loginPassword.value = "";
 
+              todoEkraniGoster();
+            } else {
+              alert("Kullanıcı Adı Yada Şifre Yanlış");
+            }
+          } else {
+            alert("Lütfen Bilgileri Giriniz!");
+          }
+        });
 
-        }
+        btnKaydol.addEventListener("click", (e) => {
+          if (
+            registerUserName.value.length > 0 &&
+            registerPassword.value.length > 0 &&
+            registerPasswordAgain.value.length > 0
+          ) {
+            if (registerPassword.value.length > 4) {
+              if (registerPassword.value == registerPasswordAgain.value) {
+                if (isUserNameUnique(registerUserName.value)) {
+                  addUser(registerUserName.value, registerPassword.value);
 
+                  registerUserName.value = "";
+                  registerPassword.value = "";
+                  registerPasswordAgain.value = "";
 
-        initializeButtons()
-
-        function initializeButtons(){
-
-            btnGirisYap.addEventListener("click", (e) => {
-
-
-                if(loginUserName.value.length > 0 && loginPassword.value.length > 0){
-
-                    if(loginUser(loginUserName.value,loginPassword.value)){
-
-                        localStorage.setItem("user",JSON.stringify(new User(loginUserName.value, stringToHash(loginPassword.value))))
-                        
-                        todoHeader.innerText = loginUserName.value + " Yapılacaklar Listesi"
-
-                        loginUserName.value = ""
-                        loginPassword.value = ""
-
-                        todoEkraniGoster()
-
-                    }else{
-
-                        alert("Kullanıcı Adı Yada Şifre Yanlış")
-
-                    }
-
-                }else{
-
-                    alert("Lütfen Bilgileri Giriniz!")
-
+                  girisEkraniGoster();
+                } else {
+                  alert("Böyle Bir Kullanıcı Adı Zaten Var");
                 }
+              } else {
+                alert("Şifreler Uyuşmuyor");
+              }
+            } else {
+              alert("Şifreniz 4 Haneden Fazla Olmalı");
+            }
+          } else {
+            alert("Lütfen Bilgileri Giriniz!");
+          }
+        });
 
+        btnHesabimVar.addEventListener("click", (e) => {
+          girisEkraniGoster();
+        });
 
-            })
+        btnHesabimYok.addEventListener("click", (e) => {
+          kayitEkraniGoster();
+        });
 
-            btnKaydol.addEventListener("click", (e) => {
+        btnCikisYap.addEventListener("click", (e) => {
+          cikisYap();
+          girisEkraniGoster();
+        });
+      }
 
-                if(registerUserName.value.length > 0 && registerPassword.value.length > 0 && registerPasswordAgain.value.length > 0){
+      function getUser() {
+        var user = localStorage.getItem("user");
 
-                    if(registerPassword.value.length > 4){
-                        
-                        if(registerPassword.value == registerPasswordAgain.value){
-                            
-                            if(isUserNameUnique(registerUserName.value)){
-                                
-                                addUser(registerUserName.value,registerPassword.value)
-
-                                registerUserName.value = ""
-                                registerPassword.value = ""
-                                registerPasswordAgain.value = ""
-
-                                girisEkraniGoster()
-
-                            }else{
-
-                                alert("Böyle Bir Kullanıcı Adı Zaten Var")
-
-                            }
-
-                        }else{
-
-                            alert("Şifreler Uyuşmuyor")
-
-                        }
-
-                    }else{
-
-                        alert("Şifreniz 4 Haneden Fazla Olmalı")
-
-                    }
-
-                }else{
-
-                    alert("Lütfen Bilgileri Giriniz!")
-
-                }
-
-
-            })
-
-            btnHesabimVar.addEventListener("click", (e) => {
-
-                girisEkraniGoster()
-
-            })
-
-            btnHesabimYok.addEventListener("click",(e) => {
-
-                kayitEkraniGoster()
-
-            })
-
-            btnCikisYap.addEventListener("click",(e) => {
-
-                cikisYap()
-                girisEkraniGoster()
-
-            })
-
+        if (user == null || user == "") {
+          return null;
         }
 
-        
+        return JSON.parse(user);
+      }
 
-        function getUser() {
+      function todoListesineEkle(todoText) {
+        //gelen todoyu html e dönüştürüp ul etiketine ekliyorum
+        listGroup.appendChild(todoHtmliOlustur(todoText));
+      }
 
-            var user = localStorage.getItem("user")
+      function cikisYap() {
+        localStorage.setItem("user", null);
+      }
+      function ekranlariGizle() {
+        todoEkraniGizle();
+        girisEkraniGizle();
+        kayitEkraniGizle();
+      }
 
-            if(user == null || user == ''){
-                
-                return null
-            
+      function todoEkraniGoster() {
+        todoEkrani.style.display = "block";
+        girisEkraniGizle();
+        kayitEkraniGizle();
+
+        user = autoLoginUser();
+
+        if (user == null) {
+          girisEkraniGoster();
+        } else {
+          todoHeader.innerText = user.userName + " Yapılacaklar Listesi";
+        }
+
+        listGroup.innerHTML = "";
+
+        let todos = [];
+        if (localStorage.getItem("todos") !== null) {
+          todos = JSON.parse(localStorage.getItem("todos"));
+        }
+
+        //diziyi donerek teker teker htmle ekliyorum
+        todos.forEach((element) => {
+          if (element.userName == user.userName) {
+            //htmldeki ul etiketine ekliyor
+            todoListesineEkle(element.todo);
+          }
+        });
+      }
+
+      function todoEkraniGizle() {
+        todoEkrani.style.display = "none";
+        listGroup.innerHTML = "";
+      }
+
+      function girisEkraniGoster() {
+        girisEkrani.style.display = "block";
+        kayitEkraniGizle();
+        todoEkraniGizle();
+      }
+
+      function girisEkraniGizle() {
+        girisEkrani.style.display = "none";
+      }
+
+      function kayitEkraniGoster() {
+        kayitEkrani.style.display = "block";
+        todoEkraniGizle();
+        girisEkraniGizle();
+      }
+
+      function kayitEkraniGizle() {
+        kayitEkrani.style.display = "none";
+      }
+
+      class Todo {
+        constructor(userName, todo) {
+          this.userName = userName;
+          this.todo = todo;
+        }
+      }
+
+      let cardBody = document.querySelectorAll(".card-body")[1];
+      let headerCardBody = document.querySelector("#todo-form");
+      let newTodoInput = document.querySelector(".form-control");
+      let searchInput = document.querySelectorAll(".form-control")[1];
+
+      var input = document.getElementById("todoForm");
+
+      // Execute a function when the user releases a key on the keyboard
+      input.addEventListener("keyup", function (e) {
+        if (e.keyCode == 13) {
+          //ekliyecegim todo
+          let newTodoText = newTodoInput.value;
+
+          //bos mu diye kontrol ediyorum
+          if (newTodoText != "") {
+            //burda yeni bir todo ekliyecem
+            //ekliyeceğim yer: list-group (ul etiketine)
+
+            //once çerez olarak ekliyorum eğer işlem başarılıysa true değilse false dönüyor
+            //eğer ekleme işlemi başarılıysa htmle de eklyorum
+            if (localStorageEkle(newTodoText)) {
+              //htmldeki ul etiketine ekliyor
+              listeyeEkle(newTodoText);
+            }
+          }
+
+          newTodoInput.value = "";
+        }
+
+        event.preventDefault();
+      });
+
+      //todo eklendiginde calisan yer
+      headerCardBody.addEventListener("click", function (e) {
+        //ekliyecegim todo
+        let newTodoText = newTodoInput.value;
+
+        //bos mu diye kontrol ediyorum
+        if (newTodoText != "") {
+          //burda yeni bir todo ekliyecem
+          //ekliyeceğim yer: list-group (ul etiketine)
+
+          //once çerez olarak ekliyorum eğer işlem başarılıysa true değilse false dönüyor
+          //eğer ekleme işlemi başarılıysa htmle de eklyorum
+          if (localStorageEkle(newTodoText)) {
+            //htmldeki ul etiketine ekliyor
+            listeyeEkle(newTodoText);
+          }
+        }
+
+        newTodoInput.value = "";
+
+        e.preventDefault();
+      });
+
+      //tiklanilan olaya göre işlem yapıyorum
+      cardBody.addEventListener("click", function (e) {
+        //todonun silme yerine tiklandiysa todoyu siliyorum
+        if (e.target.className == "fa fa-remove") {
+          //dolaylı yoldan parentini buluyorum
+          var todo = e.target.parentElement.parentElement;
+          var todoText = todo.textContent;
+
+          //todo yu çerezlerden (depodan) siliyorum
+          localStoragedenSil(todoText);
+
+          //elementi html den siliyorum
+          todo.remove();
+        } //tüm todolari temizle butonuna tıklandıysa her şeyi siliyorum
+        else if (e.target.id == "clear-todos") {
+          if (confirm("Emin misin?")) {
+            //htmli temizliyorum
+            listGroup.innerHTML = "";
+
+            let todos = [];
+            if (localStorage.getItem("todos") !== null) {
+              todos = JSON.parse(localStorage.getItem("todos"));
             }
 
-            return JSON.parse(user)
-        }
+            var user = JSON.parse(localStorage.getItem("user"));
 
-        function todoListesineEkle(todoText){
-            //gelen todoyu html e dönüştürüp ul etiketine ekliyorum
-            listGroup.appendChild(todoHtmliOlustur(todoText))
-        }
-
-
-        function cikisYap(){
-            localStorage.setItem("user",null)
-        }
-        function ekranlariGizle(){
-            todoEkraniGizle()
-            girisEkraniGizle()
-            kayitEkraniGizle()
-        }
-
-        function todoEkraniGoster(){
-            todoEkrani.style.display = "block"
-            girisEkraniGizle()
-            kayitEkraniGizle()
-
-            user = autoLoginUser()
-
-            if(user == null){
-
-                girisEkraniGoster()
-
-            }else{
-
-                todoHeader.innerText = user.userName + " Yapılacaklar Listesi"
-            
-            }
-
-
-
-            listGroup.innerHTML = ""
-
-            
-
-            let todos = []   
-            if(localStorage.getItem("todos") !== null){
-                todos = JSON.parse(localStorage.getItem("todos"))
-            }
-
-
-            //diziyi donerek teker teker htmle ekliyorum
-            todos.forEach(element => {
-                
-                if(element.userName == user.userName){
-
-                    //htmldeki ul etiketine ekliyor
-                    todoListesineEkle(element.todo)
-
-                }
-
-
+            let targetIndexs = [];
+            todos.forEach((item, index) => {
+              if (item.userName == user.userName) {
+                targetIndexs.push(index);
+              }
             });
 
+            //reverse yapiyorum cunku silerken index siralari kayiyor
+            targetIndexs = targetIndexs.reverse();
+            targetIndexs.forEach((item) => {
+              todos.splice(item, 1);
+            });
+
+            localStorage.setItem("todos", JSON.stringify(todos));
+          }
         }
 
-        function todoEkraniGizle(){
-            todoEkrani.style.display = "none"
-            listGroup.innerHTML = ""
-        }
+        e.preventDefault();
+      });
 
-        function girisEkraniGoster(){
-            girisEkrani.style.display = "block"
-            kayitEkraniGizle()
-            todoEkraniGizle()
-        }
+      searchInput.addEventListener("keyup", function (e) {
+        const filterValue = e.target.value.toLowerCase();
 
-        function girisEkraniGizle(){
-            girisEkrani.style.display = "none"
-        }
+        const listItems = document.querySelectorAll(".list-group-item");
 
+        listItems.forEach(function (item) {
+          const text = item.textContent.toLowerCase();
 
-        function kayitEkraniGoster(){
-            kayitEkrani.style.display = "block"
-            todoEkraniGizle()
-            girisEkraniGizle()
-        }
+          if (text.indexOf(filterValue) === -1) {
+            item.setAttribute("style", "display : none !important");
+          } else {
+            item.setAttribute("style", " display : block ");
+          }
+        });
+      });
 
-        function kayitEkraniGizle(){
-            kayitEkrani.style.display = "none"
-        } 
+      //çereze(depoya) ekliyorum
+      function localStorageEkle(newTodoText) {
+        //tum todolari getiriyorum
+        let todos = todolariGetir();
 
+        console.log("todos: ");
+        console.log(todos);
 
-        class Todo{
+        buTododanVarMi = false;
 
-constructor(userName,todo){
-    this.userName = userName
-    this.todo = todo
-}
-
-}
-
-
-
-
-let cardBody = document.querySelectorAll(".card-body")[1]
-let headerCardBody = document.querySelector("#todo-form")
-let newTodoInput = document.querySelector(".form-control")
-let searchInput = document.querySelectorAll(".form-control")[1]
-
-
-
-
-
-
-//todo eklendiginde calisan yer
-headerCardBody.addEventListener("click",function(e){
-
-
-//ekliyecegim todo
-let newTodoText = newTodoInput.value
-
-//bos mu diye kontrol ediyorum
-if(newTodoText != ""){
-    
-    //burda yeni bir todo ekliyecem
-    //ekliyeceğim yer: list-group (ul etiketine)
-
-    //once çerez olarak ekliyorum eğer işlem başarılıysa true değilse false dönüyor
-    //eğer ekleme işlemi başarılıysa htmle de eklyorum
-    if(localStorageEkle(newTodoText)){
-        
-        //htmldeki ul etiketine ekliyor
-        listeyeEkle(newTodoText)
-
-    }
-
-}
-
-newTodoInput.value = ""
-
-e.preventDefault()
-
-})
-
-
-
-//tiklanilan olaya göre işlem yapıyorum
-cardBody.addEventListener("click",function(e){
-
-//todonun silme yerine tiklandiysa todoyu siliyorum
-if(e.target.className == "fa fa-remove"){
-
-    //dolaylı yoldan parentini buluyorum
-    var todo = e.target.parentElement.parentElement
-    var todoText = todo.textContent
-
-    
-    //todo yu çerezlerden (depodan) siliyorum
-    localStoragedenSil(todoText)
-
-    //elementi html den siliyorum
-    todo.remove()
-
-}//tüm todolari temizle butonuna tıklandıysa her şeyi siliyorum
-else if(e.target.id == "clear-todos"){
-    
-    if(confirm("Emin misin?")){
-
-        //htmli temizliyorum
-        listGroup.innerHTML = ""
-        
-        let todos = []   
-        if(localStorage.getItem("todos") !== null){
-            todos = JSON.parse(localStorage.getItem("todos"))
-        }
-
-        var user = JSON.parse(localStorage.getItem("user"))
-
-        let targetIndexs = []
-        todos.forEach((item,index) => {
-    
-            if(item.userName == user.userName){
-                targetIndexs.push(index)
+        todos.forEach((element) => {
+          if (element.userName == user.userName) {
+            if (element.todo == newTodoText) {
+              buTododanVarMi = true;
             }
-            
-    
-        })
-        
-        //reverse yapiyorum cunku silerken index siralari kayiyor
-        targetIndexs = targetIndexs.reverse()
-        targetIndexs.forEach(item => {
-            todos.splice(item,1)
-        })
+          }
+        });
 
-
-        localStorage.setItem("todos",JSON.stringify(todos))
-
-    
-
-        
-    }
-    
-    
-}
-
-e.preventDefault()
-})
-
-
-searchInput.addEventListener("keyup",function(e){
-
-const filterValue = e.target.value.toLowerCase();
-
-const listItems = document.querySelectorAll(".list-group-item");
-
-listItems.forEach(function(item){
-
-    const text = item.textContent.toLowerCase();
-
-    if(text.indexOf(filterValue) === -1){
-        item.setAttribute("style","display : none !important")
-    }else{
-        item.setAttribute("style","display : block ")
-    }
-    
-
-})
-
-
-})
-
-//çereze(depoya) ekliyorum
-function localStorageEkle(newTodoText){
-
-//tum todolari getiriyorum
-let todos = todolariGetir()
-
-console.log("todos: ")
-console.log(todos)
-
-buTododanVarMi = false
-
-todos.forEach(element => {
-    
-    if(element.userName == user.userName){
-
-        if(element.todo == newTodoText){
-            buTododanVarMi = true
+        if (buTododanVarMi) {
+          alert("bu tododan zaten var");
+          return false;
+        } else {
+          todos.push(new Todo(user.userName, newTodoText));
+          localStorage.setItem("todos", JSON.stringify(todos));
+          return true;
         }
+      }
 
-    }
+      //çerezlerden(depodan) siliyorum
+      function localStoragedenSil(todoText) {
+        let todos = todolariGetir();
 
-});
+        var user = JSON.parse(localStorage.getItem("user"));
 
-if(buTododanVarMi){
+        let targetIndex = 0;
+        todos.forEach((item, index) => {
+          if (item.userName == user.userName && item.todo == todoText) {
+            targetIndex = index;
+          }
+        });
 
-    alert("bu tododan zaten var")
-    return false
+        todos.splice(targetIndex, 1);
 
-}else{
+        localStorage.setItem("todos", JSON.stringify(todos));
+      }
 
-    todos.push(new Todo(user.userName,newTodoText))
-    localStorage.setItem("todos",JSON.stringify(todos))
-    return true
+      //çerezlerdeki(depodaki) todo ları getiriyorum
+      function todolariGetir() {
+        let todos = [];
+        if (localStorage.getItem("todos") !== null) {
+          todos = JSON.parse(localStorage.getItem("todos"));
+        }
+        return todos;
+      }
 
-}
-
-}
-
-//çerezlerden(depodan) siliyorum
-function localStoragedenSil(todoText){
-
-let todos = todolariGetir()
-
-var user = JSON.parse(localStorage.getItem("user"))
-
-let targetIndex = 0
-todos.forEach((item,index) => {
-
-    if(item.userName == user.userName && item.todo == todoText){
-        targetIndex = index
-    }
-    
-
-})
-
-
-todos.splice(targetIndex,1)
-
-localStorage.setItem("todos",JSON.stringify(todos))
-
-}
-
-
-
-//çerezlerdeki(depodaki) todo ları getiriyorum
-function todolariGetir(){
-let todos = []   
-if(localStorage.getItem("todos") !== null){
-    todos = JSON.parse(localStorage.getItem("todos"))
-}
-return todos
-}
-
-//ul etiketine ekliyorum
-function listeyeEkle(todoText){
-//gelen todoyu html e dönüştürüp ul etiketine ekliyorum
-listGroup.appendChild(todoHtmliOlustur(todoText))
-}
-
+      //ul etiketine ekliyorum
+      function listeyeEkle(todoText) {
+        //gelen todoyu html e dönüştürüp ul etiketine ekliyorum
+        listGroup.appendChild(todoHtmliOlustur(todoText));
+      }
     </script>
-
-
-
-</body>
-
+  </body>
 </html>
